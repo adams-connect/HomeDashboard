@@ -15,9 +15,8 @@ unclutter -idle 0.5 -root &
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 cd "$SCRIPT_DIR" || exit 1
 
-# 4. Start lightweight local Python HTTP server on port 8080 (binds to localhost)
-# Serving locally eliminates file:// sandbox restrictions for clean fetch requests.
-python3 -m http.server 8080 --bind 127.0.0.1 &
+# 4. Start lightweight local Python server with calendar proxy on port 8080
+python3 server.py &
 SERVER_PID=$!
 
 # Ensure server terminates when this script exits

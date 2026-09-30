@@ -37,25 +37,56 @@ export class AgendaModule {
   }
 
   async fetchEvents() {
-    const icsUrl = this.config.feeds.calendarIcsUrl;
+    let urls = [];
+    const feeds = this.config.feeds || {};
 
-    if (icsUrl && icsUrl.trim() !== "") {
-      try {
-        const response = await fetch(icsUrl, { cache: "no-store" });
-        if (!response.ok) throw new Error(`ICS HTTP ${response.status}`);
-        const icsText = await response.text();
-        const parsed = this.parseICS(icsText);
-        if (parsed.length > 0) {
-          this.events = parsed;
-          this.render(parsed);
-          return;
+    if (Array.isArray(feeds.calendarIcsUrls)) {
+      urls = feeds.calendarIcsUrls.filter((u) => typeof u === "string" && u.trim() !== "");
+    } else if (typeof feeds.calendarIcsUrl === "string" && feeds.calendarIcsUrl.trim() !== "") {
+      urls = [feeds.calendarIcsUrl.trim()];
+    }
+
+    if (urls.length > 0) {
+      const allEvents = [];
+      for (const rawUrl of urls) {
+        // Automatically convert webcal:// to https://
+        const normalizedUrl = rawUrl.replace(/^webcal:\/\//i, "https://");
+        let icsText = null;
+
+        // 1. Direct fetch (native Raspberry Pi kiosk with --disable-web-security)
+        try {
+          const response = await fetch(normalizedUrl, { cache: "no-store" });
+          if (response.ok) {
+            icsText = await response.text();
+          }
+        } catch (directErr) {
+          // 2. Direct fetch blocked by CORS (e.g. desktop browser review) - try local server proxy
+          try {
+            const localProxyUrl = `/api/calendar?url=${encodeURIComponent(normalizedUrl)}`;
+            const proxyRes = await fetch(localProxyUrl, { cache: "no-store" });
+            if (proxyRes.ok) {
+              icsText = await proxyRes.text();
+            }
+          } catch (proxyErr) {
+            console.warn(`[Agenda] Failed to fetch calendar feed: ${normalizedUrl}`, proxyErr.message);
+          }
         }
-      } catch (err) {
-        console.warn("[Agenda] Remote ICS fetch failed, using local events.json fallback:", err.message);
+
+        if (icsText) {
+          const parsed = this.parseICS(icsText);
+          allEvents.push(...parsed);
+        }
+      }
+
+      if (allEvents.length > 0) {
+        allEvents.sort((a, b) => a.startDate - b.startDate);
+        this.events = allEvents;
+        this.render(allEvents);
+        return;
       }
     }
 
-    // Fallback to local events.json
+    // Fallback to local events.json if no remote feeds or all feeds returned empty
     await this.loadLocalEvents();
   }
 
@@ -131,13 +162,12 @@ export class AgendaModule {
         if (current.summary && current.startDate) {
           events.push(current);
         }
-      } else if (inEvent) {
         if (line.startsWith("SUMMARY:")) {
-          current.summary = line.substring(8);
+          current.summary = line.substring(8).replace(/\\,/g, ",").replace(/\\;/g, ";").replace(/\\n/g, " ");
         } else if (line.startsWith("LOCATION:")) {
-          current.location = line.substring(9);
+          current.location = line.substring(9).replace(/\\,/g, ",").replace(/\\;/g, ";").replace(/\\n/g, " ");
         } else if (line.startsWith("DESCRIPTION:")) {
-          current.description = line.substring(12);
+          current.description = line.substring(12).replace(/\\,/g, ",").replace(/\\;/g, ";").replace(/\\n/g, " ");
         } else if (line.startsWith("DTSTART")) {
           current.startDate = this.parseIcsDate(line);
         } else if (line.startsWith("DTEND")) {
@@ -146,13 +176,17 @@ export class AgendaModule {
       }
     }
 
-    // Filter events occurring today
+    // Filter events occurring today (including multi-day or ongoing events)
     const now = new Date();
     const startOfDay = new Date(now.getFullYear(), now.getMonth(), now.getDate(), 0, 0, 0);
     const endOfDay = new Date(now.getFullYear(), now.getMonth(), now.getDate(), 23, 59, 59);
 
     const todaysEvents = events
-      .filter((e) => e.startDate && e.startDate >= startOfDay && e.startDate <= endOfDay)
+      .filter((e) => {
+        if (!e.startDate) return false;
+        const eventEnd = e.endDate || new Date(e.startDate.getTime() + 60 * 60 * 1000);
+        return e.startDate <= endOfDay && eventEnd >= startOfDay;
+      })
       .map((e, idx) => ({
         id: `ics-${idx}`,
         title: e.summary,

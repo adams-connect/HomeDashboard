@@ -11,7 +11,7 @@ export const CONFIG = {
     name: "Altoona, PA",
     latitude: 40.508012,
     longitude: -78.396219,
-    zoom: 6 // Radar zoom level (6 = broad regional ~200mi, 7 = metro ~100mi, 8 = local ~50mi)
+    zoom: 7 // Radar zoom level (6 = broad regional ~200mi, 7 = metro ~100mi, 8 = local ~50mi)
   },
 
   // Map Basemap Configuration
@@ -51,12 +51,11 @@ export const CONFIG = {
 
   // External feeds & data sources
   feeds: {
-    // Optional public or secret iCal/webcal URL (e.g., Google Calendar, Apple iCloud, Outlook).
-    // Note: Due to CORS, this works natively when Chromium is launched with --disable-web-security
-    // in kiosk mode. If left empty or if fetch fails, the dashboard falls back to data/events.json.
-    calendarIcsUrl: "",
+    calendarIcsUrls: [
+      "https://calendar.google.com/calendar/ical/dylanadams41%40gmail.com/private-f04fcf08c95f8544924e49d84fceeb43/basic.ics"
+    ],
 
-    // Fallback local calendar path
+    // Fallback local calendar path (used if URLs are empty or offline)
     localEventsPath: "./data/events.json",
 
     // Fallback local alerts path
