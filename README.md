@@ -56,7 +56,11 @@ export const CONFIG = {
     name: "New York, NY",
     latitude: 40.7128,
     longitude: -74.0060,
-    zoom: 7 // Radar zoom (6: regional ~200mi, 7: metro ~100mi, 8: local ~50mi)
+    zoom: 6 // Radar zoom (6: regional ~200mi, 7: metro ~100mi, 8: local ~50mi)
+  },
+  map: {
+    provider: "esri-dark", // "esri-dark" (free) | "carto-dark" (free) | "carto-voyager" (free) | "mapbox"
+    mapboxToken: ""        // Optional free Mapbox public token
   },
   units: {
     temperature: "fahrenheit", // "fahrenheit" | "celsius"

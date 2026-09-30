@@ -14,6 +14,21 @@ export const CONFIG = {
     zoom: 6 // Radar zoom level (6 = broad regional ~200mi, 7 = metro ~100mi, 8 = local ~50mi)
   },
 
+  // Map Basemap Configuration
+  map: {
+    // Selected basemap style:
+    // "esri-dark"     -> High-contrast dark map with county/highway labels (100% FREE, NO API key required)
+    // "carto-dark"    -> Minimalist slate dark map (100% FREE, NO API key required)
+    // "carto-voyager" -> Muted modern color map (100% FREE, NO API key required)
+    // "mapbox"        -> Ultra-crisp vector raster map (Requires free Mapbox public token below)
+    provider: "esri-dark",
+
+    // Optional Mapbox public access token (https://account.mapbox.com)
+    // Free tier includes 50,000 map loads/month (kiosk uses < 1,500/month).
+    // Only needed if provider is set to "mapbox".
+    mapboxToken: ""
+  },
+
   // Measurement and display units
   units: {
     temperature: "fahrenheit", // "fahrenheit" | "celsius"
