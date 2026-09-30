@@ -1,0 +1,34 @@
+{
+  "alerts": [
+    {
+      "id": "alt-01",
+      "severity": "Warning",
+      "category": "Traffic",
+      "headline": "I-95 Northbound Major Construction & Single Lane Closure",
+      "description": "Bridge deck resurfacing near Exit 16. Expect 25-35 minute delays during peak travel hours. Alternate routes via Parkway advised.",
+      "area": "Metro Corridor / Mile Marker 42-48",
+      "effective": "Active Now",
+      "expires": "Tomorrow, 6:00 AM"
+    },
+    {
+      "id": "alt-02",
+      "severity": "Advisory",
+      "category": "Weather",
+      "headline": "Regional Wind Advisory in Effect",
+      "description": "Sustained winds 25 to 30 mph with localized gusts up to 45 mph possible this evening. High-profile vehicles use caution.",
+      "area": "Tri-State Coastal & Metro Area",
+      "effective": "Active Now",
+      "expires": "Today, 10:00 PM"
+    },
+    {
+      "id": "alt-03",
+      "severity": "Minor",
+      "category": "Transit",
+      "headline": "Downtown Crosstown Utility Work",
+      "description": "Right lane closed between 4th Ave and 8th Ave for fiber conduit repairs. Traffic flowing smoothly with slight slow-downs.",
+      "area": "Downtown Center",
+      "effective": "Active Now",
+      "expires": "Today, 5:00 PM"
+    }
+  ]
+}

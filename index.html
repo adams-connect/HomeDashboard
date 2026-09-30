@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="theme-color" content="#080c14">
+  <meta name="description" content="Ultra-lightweight modern ambient wall dashboard designed for 1080p kiosk mode on Raspberry Pi 3B+">
+  <title>Ambient Home Dashboard</title>
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+
+  <!-- Full-screen 1080p Viewport Container -->
+  <main id="app-viewport">
+
+    <!-- Top Bar: Clock, Date, System & Network Status -->
+    <header class="top-bar">
+      <div class="top-bar-left">
+        <div class="clock-display" id="clock-container" aria-label="Current Time">
+          <span id="clock-time">12<span class="clock-colon">:</span>00</span>
+          <span id="clock-seconds" class="clock-seconds">:00</span>
+          <span id="clock-ampm" class="clock-ampm">PM</span>
+        </div>
+        <div class="date-display" id="clock-date" aria-label="Current Date">
+          Loading Date...
+        </div>
+      </div>
+
+      <div class="top-bar-right">
+        <div class="status-pill status-online" id="network-status" aria-label="Network Status">
+          <span class="status-dot"></span>
+          <span id="network-status-text">Online</span>
+        </div>
+        <span class="sync-status" id="sync-status-text">Synced</span>
+        <button class="icon-btn" id="manual-refresh-btn" title="Refresh Dashboard Now" aria-label="Refresh Dashboard">
+          <svg class="svg-icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21.5 2v6h-6"></path>
+            <path d="M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"></path>
+          </svg>
+        </button>
+      </div>
+    </header>
+
+    <!-- Main Grid Content Area -->
+    <div class="dashboard-main">
+
+      <!-- Column 1: Weather & 5-Day Forecast -->
+      <section class="dashboard-card" id="weather-panel" aria-label="Weather Forecast">
+        <div class="card-header">
+          <div class="card-title-group">
+            <span class="panel-icon">⛅</span>
+            <h2 class="card-title" id="weather-location-name">Weather</h2>
+          </div>
+          <span class="card-badge badge-warning hidden" id="weather-error-badge">Offline</span>
+        </div>
+        <div class="card-content" id="weather-content">
+          <!-- Populated by modules/weather.js -->
+          <div class="card-empty-state">
+            <p>Loading weather conditions...</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Column 2: Looping Radar & Traffic/Hazards Alerts -->
+      <div class="center-column">
+
+        <!-- Radar Panel -->
+        <section class="dashboard-card" id="radar-panel" aria-label="Regional Weather Radar">
+          <div class="card-header">
+            <div class="card-title-group">
+              <span class="panel-icon">📡</span>
+              <h2 class="card-title">Live Doppler Radar</h2>
+            </div>
+            <span class="card-badge badge-live" id="radar-status-badge">Live</span>
+          </div>
+
+          <div class="radar-canvas-container">
+            <canvas id="radar-canvas" width="640" height="380"></canvas>
+          </div>
+
+          <div class="radar-controls-bar">
+            <div class="radar-time-info" id="radar-timestamp">
+              <strong>Loading frames...</strong>
+            </div>
+            <div class="radar-scrubber" id="radar-scrubber" aria-label="Radar frame progress"></div>
+            <div class="radar-actions">
+              <button class="btn-ghost-sm" id="radar-play-pause">Pause</button>
+            </div>
+          </div>
+        </section>
+
+        <!-- Traffic & Hazard Alerts Panel -->
+        <section class="dashboard-card" id="traffic-panel" aria-label="Traffic and Hazard Alerts">
+          <div class="card-header">
+            <div class="card-title-group">
+              <span class="panel-icon">⚠️</span>
+              <h2 class="card-title">Travel & Hazard Alerts</h2>
+            </div>
+            <span class="card-badge badge-success" id="alerts-count-badge">Checking...</span>
+          </div>
+          <div class="card-content" id="alerts-content">
+            <!-- Populated by modules/traffic.js -->
+            <div class="card-empty-state">
+              <p>Scanning local incident feeds...</p>
+            </div>
+          </div>
+        </section>
+
+      </div>
+
+      <!-- Column 3: Daily Agenda & Events -->
+      <section class="dashboard-card" id="agenda-panel" aria-label="Daily Schedule and Events">
+        <div class="card-header">
+          <div class="card-title-group">
+            <span class="panel-icon">📅</span>
+            <h2 class="card-title">Today's Schedule</h2>
+          </div>
+          <span class="card-badge badge-live" id="agenda-count-badge">Events</span>
+        </div>
+        <div class="card-content" id="agenda-content">
+          <!-- Populated by modules/agenda.js -->
+          <div class="card-empty-state">
+            <p>Loading schedule...</p>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- ES6 Module Entry Point -->
+  <script type="module" src="./app.js"></script>
+</body>
+</html>
