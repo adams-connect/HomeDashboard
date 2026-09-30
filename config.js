@@ -11,7 +11,7 @@ export const CONFIG = {
     name: "Altoona, PA",
     latitude: 40.508012,
     longitude: -78.396219,
-    zoom: 8 // Radar zoom level (6 = broad regional ~200mi, 7 = metro ~100mi, 8 = local ~50mi)
+    zoom: 6 // Radar zoom level (6 = broad regional ~200mi, 7 = metro ~100mi, 8 = local ~50mi)
   },
 
   // Measurement and display units
