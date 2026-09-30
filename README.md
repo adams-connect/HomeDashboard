@@ -12,7 +12,7 @@ Built with **pure Vanilla HTML5, CSS3, and ES6 JavaScript** with zero heavy buil
 - **Header & Clock**: Real-time 1-second clock with blinking separator, seconds display, formatted full date, and live network/refresh status badges.
 - **Weather Panel**: Real-time conditions and 5-day forecast via [Open-Meteo](https://open-meteo.com/) (100% free, no API keys, zero rate-limit hassles).
 - **Radar Panel**: Looping regional Doppler radar via [RainViewer](https://www.rainviewer.com/api.html) rendered directly onto a single 2D `<canvas>` with CartoDB Dark Matter basemap. Zero DOM nodes created or destroyed during cycling; pre-rendered offscreen buffer swaps every 15 minutes.
-- **Traffic & Travel Hazards**: Active storm, winter weather, and road hazard warnings via the National Weather Service (NWS) API and local fallback feeds.
+- **Live Traffic & Commute Hub**: Real-time commute duration calculations, delay deltas, and corridor statuses from home (`1500 3rd Ave, Altoona, PA`) to major destinations (I-99 North/South, Downtown & UPMC, Logan Town Centre, Pleasant Valley / PA-764). Combined with live National Weather Service & PennDOT road advisories.
 - **Daily Agenda & Events**: Chronological schedule tracking with live status indicators (`In Progress`, `Upcoming`, `Completed`). Supports remote iCal/webcal URLs (`.ics`) and local `data/events.json`.
 - **Engine Stability & Resilience**:
   - Independent retry intervals with stale-cache retention during network drops.
@@ -26,13 +26,13 @@ Built with **pure Vanilla HTML5, CSS3, and ES6 JavaScript** with zero heavy buil
 HomeDashboard/
 ├── index.html              # 1080p semantic HTML5 layout container
 ├── styles.css              # Dark mode slate design system, CSS Grid, high-contrast typography
-├── config.js               # Central user configuration (lat/lon, intervals, feeds, units)
+├── config.js               # Central user configuration (lat/lon, intervals, feeds, units, routes)
 ├── app.js                  # Main controller, module orchestrator, lifecycle & resilience
 ├── modules/
 │   ├── clock.js            # Digital clock, date formatting, seconds pulse, network status
 │   ├── weather.js          # Open-Meteo client, current conditions, 5-day forecast
 │   ├── radar.js            # RainViewer tile compositor & smooth canvas frame cycler
-│   ├── traffic.js          # NWS & DOT alert parser, severity tagging
+│   ├── traffic.js          # Real-time commute duration calculator & NWS road hazard parser
 │   ├── agenda.js           # iCal/ICS parser & local event reader with status badges
 │   └── icons.js            # Lightweight inline SVG icon definitions
 ├── data/
@@ -53,35 +53,54 @@ Edit [`config.js`](file:///c:/Users/dylan/OneDrive/Documents/Adams%20Connect/App
 ```javascript
 export const CONFIG = {
   location: {
-    name: "New York, NY",
-    latitude: 40.7128,
-    longitude: -74.0060,
-    zoom: 6 // Radar zoom (6: regional ~200mi, 7: metro ~100mi, 8: local ~50mi)
+    address: "1500 3rd Ave, Altoona, PA 16602",
+    name: "Altoona, PA",
+    latitude: 40.508001,
+    longitude: -78.396269,
+    zoom: 7
+  },
+  traffic: {
+    origin: {
+      address: "1500 3rd Ave, Altoona, PA 16602",
+      latitude: 40.508001,
+      longitude: -78.396269
+    },
+    routes: [
+      { id: "downtown-upmc", name: "Downtown & UPMC Altoona", via: "via Chestnut Ave / 7th St", destination: { latitude: 40.5187, longitude: -78.3995 }, typicalMin: 6 },
+      { id: "i99-north", name: "I-99 North (Tyrone / PSU)", via: "via Frankstown Rd / I-99 N", destination: { latitude: 40.5510, longitude: -78.3650 }, typicalMin: 8 },
+      { id: "i99-south", name: "I-99 South (Hollidaysburg / US-22)", via: "via Plank Rd / I-99 S", destination: { latitude: 40.4430, longitude: -78.3880 }, typicalMin: 9 },
+      { id: "logan-centre", name: "Logan Town Centre / Goods Ln", via: "via Plank Rd / I-99", destination: { latitude: 40.4785, longitude: -78.4060 }, typicalMin: 7 },
+      { id: "pa-764", name: "Pleasant Valley / PA-764", via: "via Pleasant Valley Blvd", destination: { latitude: 40.4950, longitude: -78.4080 }, typicalMin: 5 }
+    ]
   },
   map: {
-    provider: "esri-dark", // "esri-dark" (free) | "carto-dark" (free) | "carto-voyager" (free) | "mapbox"
-    mapboxToken: ""        // Optional free Mapbox public token
+    provider: "esri-dark",
+    mapboxToken: ""
   },
   units: {
-    temperature: "fahrenheit", // "fahrenheit" | "celsius"
-    windSpeed: "mph",          // "mph" | "kmh"
-    precipitation: "inch",     // "inch" | "mm"
-    clock24h: false,           // true: 24h (19:45), false: 12h (7:45 PM)
+    temperature: "fahrenheit",
+    windSpeed: "mph",
+    precipitation: "inch",
+    clock24h: false,
     showSeconds: true
   },
   intervals: {
     clockSec: 1,
-    weatherMin: 15,
-    radarFramesFetchMin: 15,
-    radarCycleMs: 800,
-    trafficMin: 5,
+    weatherMin: 5,
+    radarFramesFetchMin: 5,
+    radarCycleMs: 500,
+    trafficMin: 3,
     agendaMin: 10,
-    dailyReloadHour: 3 // Silent document reload at 3:00 AM
+    dailyReloadHour: 3
   },
   feeds: {
-    calendarIcsUrl: "", // Optional remote iCal/webcal URL
+    calendarIcsUrls: [...],
     localEventsPath: "./data/events.json",
-    localAlertsPath: "./data/alerts.json"
+    localAlertsPath: "./data/alerts.json",
+    rainViewerApi: "https://api.rainviewer.com/public/weather-maps.json",
+    openMeteoApi: "https://api.open-meteo.com/v1/forecast",
+    nwsAlertsApi: "https://api.weather.gov/alerts/active",
+    osrmRoutingApi: "https://router.project-osrm.org/route/v1/driving"
   }
 };
 ```

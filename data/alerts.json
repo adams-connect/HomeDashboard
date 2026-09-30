@@ -1,34 +1,24 @@
 {
   "alerts": [
     {
-      "id": "alt-01",
-      "severity": "Warning",
-      "category": "Traffic",
-      "headline": "I-95 Northbound Major Construction & Single Lane Closure",
-      "description": "Bridge deck resurfacing near Exit 16. Expect 25-35 minute delays during peak travel hours. Alternate routes via Parkway advised.",
-      "area": "Metro Corridor / Mile Marker 42-48",
-      "effective": "Active Now",
-      "expires": "Tomorrow, 6:00 AM"
-    },
-    {
-      "id": "alt-02",
+      "id": "alt-blair-01",
       "severity": "Advisory",
-      "category": "Weather",
-      "headline": "Regional Wind Advisory in Effect",
-      "description": "Sustained winds 25 to 30 mph with localized gusts up to 45 mph possible this evening. High-profile vehicles use caution.",
-      "area": "Tri-State Coastal & Metro Area",
-      "effective": "Active Now",
-      "expires": "Today, 10:00 PM"
-    },
-    {
-      "id": "alt-03",
-      "severity": "Minor",
-      "category": "Transit",
-      "headline": "Downtown Crosstown Utility Work",
-      "description": "Right lane closed between 4th Ave and 8th Ave for fiber conduit repairs. Traffic flowing smoothly with slight slow-downs.",
-      "area": "Downtown Center",
+      "category": "Traffic",
+      "headline": "I-99 Resurfacing & Maintenance",
+      "description": "Right lane restriction near Exit 31 (Plank Rd) to Exit 33 (17th St). Normal traffic movement with slight merges during peak commute.",
+      "area": "I-99 Blair County Corridor",
       "effective": "Active Now",
       "expires": "Today, 5:00 PM"
+    },
+    {
+      "id": "alt-blair-02",
+      "severity": "Minor",
+      "category": "Roadwork",
+      "headline": "Pleasant Valley Blvd (PA-764) Utility Work",
+      "description": "Utility maintenance between 17th St and Goods Lane. All lanes open with shoulder work.",
+      "area": "Pleasant Valley Commercial District",
+      "effective": "Active Now",
+      "expires": "Today, 4:00 PM"
     }
   ]
 }

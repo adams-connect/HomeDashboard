@@ -69,8 +69,8 @@ html, body {
   height: 100vh;
   display: flex;
   flex-direction: column;
-  padding: 16px 20px 20px 20px;
-  gap: 16px;
+  padding: 10px 14px 12px 14px;
+  gap: 10px;
   max-width: 1920px;
   max-height: 1080px;
   margin: 0 auto;
@@ -84,26 +84,26 @@ html, body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 12px 24px;
+  padding: 8px 18px;
   background: var(--bg-card);
   border: 1px solid var(--border-card);
   border-radius: var(--radius-card);
   box-shadow: var(--card-shadow);
-  height: 76px;
+  height: 56px;
   flex-shrink: 0;
 }
 
 .top-bar-left {
   display: flex;
   align-items: baseline;
-  gap: 16px;
+  gap: 14px;
 }
 
 .clock-display {
   display: flex;
   align-items: baseline;
   font-family: var(--font-mono);
-  font-size: 2.75rem;
+  font-size: 2.2rem;
   font-weight: 700;
   letter-spacing: -0.04em;
   color: var(--text-primary);
@@ -120,14 +120,14 @@ html, body {
 }
 
 .clock-seconds {
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   font-weight: 600;
   color: var(--accent-cyan);
   margin-left: 2px;
 }
 
 .clock-ampm {
-  font-size: 1.1rem;
+  font-size: 0.95rem;
   font-weight: 600;
   color: var(--text-secondary);
   margin-left: 6px;
@@ -135,26 +135,26 @@ html, body {
 }
 
 .date-display {
-  font-size: 1.25rem;
+  font-size: 1.05rem;
   font-weight: 500;
   color: var(--text-secondary);
   border-left: 2px solid var(--border-card);
-  padding-left: 16px;
+  padding-left: 12px;
 }
 
 .top-bar-right {
   display: flex;
   align-items: center;
-  gap: 14px;
+  gap: 12px;
 }
 
 .status-pill {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
-  padding: 6px 14px;
+  gap: 6px;
+  padding: 4px 10px;
   border-radius: var(--radius-pill);
-  font-size: 0.85rem;
+  font-size: 0.8rem;
   font-weight: 600;
   background: var(--bg-card-subtle);
   border: 1px solid var(--border-card);
@@ -162,8 +162,8 @@ html, body {
 }
 
 .status-dot {
-  width: 8px;
-  height: 8px;
+  width: 7px;
+  height: 7px;
   border-radius: 50%;
 }
 
@@ -178,7 +178,7 @@ html, body {
 }
 
 .sync-status {
-  font-size: 0.85rem;
+  font-size: 0.8rem;
   color: var(--text-muted);
 }
 
@@ -187,8 +187,8 @@ html, body {
   border: 1px solid var(--border-card);
   border-radius: var(--radius-pill);
   color: var(--text-secondary);
-  width: 36px;
-  height: 36px;
+  width: 32px;
+  height: 32px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -217,8 +217,8 @@ html, body {
 .dashboard-main {
   flex: 1;
   display: grid;
-  grid-template-columns: 460px 1fr 480px;
-  gap: 16px;
+  grid-template-columns: 430px 1fr 440px;
+  gap: 10px;
   min-height: 0; /* Important for flex-child grid */
 }
 
@@ -238,7 +238,7 @@ html, body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 16px 20px;
+  padding: 8px 14px;
   border-bottom: 1px solid var(--border-card);
   background: rgba(255, 255, 255, 0.015);
   flex-shrink: 0;
@@ -247,21 +247,21 @@ html, body {
 .card-title-group {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 8px;
 }
 
 .card-title {
-  font-size: 1.05rem;
+  font-size: 0.95rem;
   font-weight: 700;
   letter-spacing: -0.01em;
   color: var(--text-primary);
 }
 
 .card-badge {
-  font-size: 0.75rem;
+  font-size: 0.7rem;
   font-weight: 700;
   text-transform: uppercase;
-  padding: 3px 9px;
+  padding: 2px 8px;
   border-radius: var(--radius-pill);
   letter-spacing: 0.04em;
 }
@@ -303,16 +303,17 @@ html, body {
    ========================================================================== */
 
 #weather-panel .card-content {
-  padding: 20px;
-  gap: 20px;
-  justify-content: space-between;
+  padding: 10px 12px;
+  gap: 8px;
+  justify-content: flex-start;
+  overflow-y: auto;
 }
 
 .weather-hero {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 16px 20px;
+  padding: 10px 14px;
   background: var(--bg-card-subtle);
   border-radius: var(--radius-sm);
   border: 1px solid var(--border-card);
@@ -326,55 +327,55 @@ html, body {
 
 .weather-current-temp {
   font-family: var(--font-mono);
-  font-size: 5rem;
+  font-size: 3.6rem;
   font-weight: 800;
   letter-spacing: -0.05em;
   color: var(--text-primary);
 }
 
 .weather-temp-deg {
-  font-size: 1.75rem;
+  font-size: 1.4rem;
   font-weight: 600;
   color: var(--accent-cyan);
-  margin-top: 4px;
+  margin-top: 2px;
 }
 
 .weather-hero-condition {
-  margin-top: 6px;
+  margin-top: 4px;
   display: flex;
   flex-direction: column;
-  gap: 2px;
+  gap: 1px;
 }
 
 .condition-label {
-  font-size: 1.25rem;
+  font-size: 1.1rem;
   font-weight: 600;
   color: var(--text-primary);
 }
 
 .feels-like {
-  font-size: 0.95rem;
+  font-size: 0.85rem;
   color: var(--text-secondary);
 }
 
 .weather-hero-icon-wrapper svg {
-  width: 88px;
-  height: 88px;
+  width: 58px;
+  height: 58px;
   stroke: var(--accent-cyan);
-  filter: drop-shadow(0 4px 12px rgba(56, 189, 248, 0.3));
+  filter: drop-shadow(0 2px 8px rgba(56, 189, 248, 0.25));
 }
 
 .weather-stats-bar {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 10px;
+  gap: 6px;
 }
 
 .stat-pill {
   background: var(--bg-card-subtle);
   border: 1px solid var(--border-card);
   border-radius: var(--radius-sm);
-  padding: 10px 8px;
+  padding: 6px 4px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -382,57 +383,57 @@ html, body {
 }
 
 .stat-label {
-  font-size: 0.75rem;
+  font-size: 0.68rem;
   font-weight: 600;
   color: var(--text-muted);
   text-transform: uppercase;
-  margin-bottom: 4px;
+  margin-bottom: 2px;
 }
 
 .stat-value {
-  font-size: 1.05rem;
+  font-size: 0.95rem;
   font-weight: 700;
   font-family: var(--font-mono);
   color: var(--text-primary);
 }
 
 .section-micro-title {
-  font-size: 0.85rem;
+  font-size: 0.75rem;
   font-weight: 700;
   color: var(--text-muted);
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  margin-bottom: 12px;
+  margin-bottom: 6px;
 }
 
 .forecast-grid {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
-  gap: 8px;
+  gap: 6px;
 }
 
 .forecast-card {
   background: var(--bg-card-subtle);
   border: 1px solid var(--border-card);
   border-radius: var(--radius-sm);
-  padding: 12px 6px;
+  padding: 8px 4px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 8px;
+  gap: 5px;
   text-align: center;
 }
 
 .forecast-day {
-  font-size: 0.85rem;
+  font-size: 0.75rem;
   font-weight: 700;
   color: var(--text-secondary);
   text-transform: uppercase;
 }
 
 .forecast-icon svg {
-  width: 32px;
-  height: 32px;
+  width: 26px;
+  height: 26px;
   stroke: var(--accent-cyan);
 }
 
@@ -440,17 +441,17 @@ html, body {
   display: flex;
   flex-direction: column;
   font-family: var(--font-mono);
-  line-height: 1.2;
+  line-height: 1.15;
 }
 
 .forecast-high {
-  font-size: 1rem;
+  font-size: 0.92rem;
   font-weight: 700;
   color: var(--text-primary);
 }
 
 .forecast-low {
-  font-size: 0.85rem;
+  font-size: 0.78rem;
   font-weight: 500;
   color: var(--text-muted);
 }
@@ -460,7 +461,7 @@ html, body {
   align-items: center;
   justify-content: center;
   gap: 2px;
-  font-size: 0.75rem;
+  font-size: 0.7rem;
   font-weight: 600;
   color: var(--accent-cyan);
 }
@@ -470,27 +471,28 @@ html, body {
 }
 
 .precip-drop svg {
-  width: 12px;
-  height: 12px;
+  width: 10px;
+  height: 10px;
   stroke: var(--accent-cyan);
 }
 
 /* ==========================================================================
-   Column 2: Center Column (Radar Top + Traffic Alerts Bottom)
+   Column 2: Center Column (Radar Top + Live Traffic Bottom)
    ========================================================================== */
 
 .center-column {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 10px;
   min-height: 0;
 }
 
 /* Radar Card */
 #radar-panel {
-  flex: 1.25;
+  flex: 1.12;
   display: flex;
   flex-direction: column;
+  min-height: 0;
 }
 
 .radar-canvas-container {
@@ -501,6 +503,7 @@ html, body {
   align-items: center;
   justify-content: center;
   overflow: hidden;
+  min-height: 0;
 }
 
 #radar-canvas {
@@ -515,7 +518,7 @@ html, body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 10px 16px;
+  padding: 6px 12px;
   background: var(--bg-card-subtle);
   border-top: 1px solid var(--border-card);
   flex-shrink: 0;
@@ -524,8 +527,8 @@ html, body {
 .radar-time-info {
   display: flex;
   align-items: center;
-  gap: 8px;
-  font-size: 0.95rem;
+  gap: 6px;
+  font-size: 0.85rem;
   color: var(--text-primary);
   font-family: var(--font-mono);
 }
@@ -538,12 +541,12 @@ html, body {
 .radar-scrubber {
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: 5px;
 }
 
 .scrubber-dot {
-  width: 10px;
-  height: 10px;
+  width: 8px;
+  height: 8px;
   border-radius: 50%;
   background: var(--text-dim);
   border: none;
@@ -554,14 +557,14 @@ html, body {
 
 .scrubber-dot.active {
   background: var(--accent-cyan);
-  box-shadow: 0 0 10px var(--accent-cyan);
-  transform: scale(1.3);
+  box-shadow: 0 0 8px var(--accent-cyan);
+  transform: scale(1.25);
 }
 
 .radar-actions {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 6px;
 }
 
 .btn-ghost-sm {
@@ -569,9 +572,9 @@ html, body {
   border: 1px solid var(--border-card);
   border-radius: var(--radius-sm);
   color: var(--text-secondary);
-  font-size: 0.8rem;
+  font-size: 0.75rem;
   font-weight: 600;
-  padding: 4px 10px;
+  padding: 3px 8px;
   cursor: pointer;
 }
 
@@ -580,112 +583,225 @@ html, body {
   color: var(--text-primary);
 }
 
-/* Traffic & Alerts Card */
+/* ==========================================================================
+   Live Traffic & Commute Hub Card
+   ========================================================================== */
+
 #traffic-panel {
-  flex: 0.85;
+  flex: 1.15;
   display: flex;
   flex-direction: column;
+  min-height: 0;
 }
 
 #traffic-panel .card-content {
-  padding: 16px;
+  padding: 8px 10px;
   overflow-y: auto;
-}
-
-.alerts-list {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-.alert-item {
-  background: var(--bg-card-subtle);
-  border-radius: var(--radius-sm);
-  padding: 12px 14px;
   display: flex;
   flex-direction: column;
   gap: 6px;
-  border-left: 4px solid var(--border-card);
 }
 
-.alert-item.severity-warning {
-  border-left-color: var(--accent-rose);
-  background: rgba(244, 63, 94, 0.05);
-}
-
-.alert-item.severity-advisory {
-  border-left-color: var(--accent-amber);
-  background: rgba(245, 158, 11, 0.05);
-}
-
-.alert-item.severity-minor {
-  border-left-color: var(--accent-cyan);
-  background: rgba(56, 189, 248, 0.05);
-}
-
-.alert-header {
+.traffic-header-info {
   display: flex;
   align-items: center;
-  gap: 8px;
+  justify-content: space-between;
+  padding: 4px 8px;
+  background: rgba(255, 255, 255, 0.02);
+  border-radius: 6px;
+  border: 1px solid var(--border-card);
 }
 
-.severity-pill {
-  font-size: 0.7rem;
-  font-weight: 800;
-  text-transform: uppercase;
-  padding: 2px 7px;
-  border-radius: 4px;
-  letter-spacing: 0.04em;
-}
-
-.severity-pill.severity-warning {
-  background: var(--accent-rose);
-  color: #fff;
-}
-
-.severity-pill.severity-advisory {
-  background: var(--accent-amber);
-  color: #000;
-}
-
-.severity-pill.severity-minor {
-  background: var(--accent-cyan);
-  color: #000;
-}
-
-.alert-category {
-  font-size: 0.75rem;
+.traffic-origin-tag {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.73rem;
   font-weight: 600;
-  color: var(--text-muted);
-  text-transform: uppercase;
+  color: var(--text-secondary);
 }
 
-.alert-time {
-  font-size: 0.75rem;
-  color: var(--text-muted);
-  margin-left: auto;
+.traffic-origin-tag .pin-icon {
+  color: var(--accent-rose);
+  font-size: 0.8rem;
 }
 
-.alert-title {
-  font-size: 0.95rem;
+.traffic-status-summary {
+  font-size: 0.7rem;
+  font-family: var(--font-mono);
+  color: var(--accent-emerald);
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+/* Commute Routes Grid */
+.commute-routes-list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 6px;
+}
+
+.commute-card {
+  background: var(--bg-card-subtle);
+  border: 1px solid var(--border-card);
+  border-radius: var(--radius-sm);
+  padding: 6px 9px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  transition: all 0.2s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.commute-card::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: var(--accent-emerald);
+}
+
+.commute-card.status-moderate::before {
+  background: var(--accent-amber);
+}
+
+.commute-card.status-heavy::before {
+  background: var(--accent-rose);
+}
+
+.commute-info {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.commute-name {
+  font-size: 0.78rem;
   font-weight: 700;
   color: var(--text-primary);
-  line-height: 1.3;
+  line-height: 1.2;
 }
 
-.alert-desc {
-  font-size: 0.85rem;
-  color: var(--text-secondary);
-  line-height: 1.4;
-}
-
-.alert-area {
-  font-size: 0.75rem;
+.commute-via {
+  font-size: 0.65rem;
   color: var(--text-muted);
+}
+
+.commute-metrics {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 1px;
+}
+
+.commute-time-block {
+  display: flex;
+  align-items: baseline;
+  gap: 2px;
+  font-family: var(--font-mono);
+}
+
+.commute-live-min {
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: var(--text-primary);
+  line-height: 1;
+}
+
+.commute-unit {
+  font-size: 0.68rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+.commute-badge {
+  font-size: 0.62rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  padding: 1px 5px;
+  border-radius: var(--radius-pill);
+  letter-spacing: 0.02em;
+}
+
+.commute-badge.status-smooth {
+  background: rgba(16, 185, 129, 0.15);
+  color: var(--accent-emerald);
+}
+
+.commute-badge.status-moderate {
+  background: rgba(245, 158, 11, 0.15);
+  color: var(--accent-amber);
+}
+
+.commute-badge.status-heavy {
+  background: rgba(244, 63, 94, 0.15);
+  color: var(--accent-rose);
+}
+
+/* Incidents & Hazards strip */
+.traffic-incidents-strip {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.traffic-incident-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 8px;
+  background: var(--bg-card-subtle);
+  border-radius: var(--radius-sm);
+  border-left: 3px solid var(--accent-amber);
+  font-size: 0.72rem;
+}
+
+.traffic-incident-item.severity-warning {
+  border-left-color: var(--accent-rose);
+  background: rgba(244, 63, 94, 0.06);
+}
+
+.traffic-incident-icon {
+  font-size: 0.8rem;
+  flex-shrink: 0;
+}
+
+.traffic-incident-text {
+  flex: 1;
+  color: var(--text-secondary);
+  line-height: 1.2;
+}
+
+.traffic-incident-text strong {
+  color: var(--text-primary);
+}
+
+.traffic-all-clear-pill {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 8px;
+  background: rgba(16, 185, 129, 0.05);
+  border: 1px solid rgba(16, 185, 129, 0.18);
+  border-radius: var(--radius-sm);
+  font-size: 0.7rem;
+  color: var(--accent-emerald);
   font-weight: 500;
 }
 
-/* All Clear State */
+.traffic-all-clear-pill svg {
+  width: 13px;
+  height: 13px;
+  stroke: var(--accent-emerald);
+  flex-shrink: 0;
+}
+
+/* Fallback / Empty State */
 .card-empty-state {
   display: flex;
   flex-direction: column;
@@ -693,47 +809,9 @@ html, body {
   justify-content: center;
   height: 100%;
   text-align: center;
-  padding: 24px;
+  padding: 16px;
   color: var(--text-secondary);
-}
-
-.alerts-all-clear {
-  gap: 6px;
-}
-
-.all-clear-icon-glow {
-  width: 52px;
-  height: 52px;
-  border-radius: 50%;
-  background: rgba(16, 185, 129, 0.15);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 8px;
-}
-
-.all-clear-icon-glow svg {
-  width: 30px;
-  height: 30px;
-  stroke: var(--accent-emerald);
-}
-
-.all-clear-title {
-  font-size: 1.15rem;
-  font-weight: 700;
-  color: var(--text-primary);
-}
-
-.all-clear-desc {
-  font-size: 0.9rem;
-  color: var(--text-secondary);
-  max-width: 320px;
-}
-
-.subtext {
-  font-size: 0.75rem;
-  color: var(--text-muted);
-  margin-top: 4px;
+  font-size: 0.85rem;
 }
 
 /* ==========================================================================
@@ -741,20 +819,20 @@ html, body {
    ========================================================================== */
 
 #agenda-panel .card-content {
-  padding: 16px;
+  padding: 8px 10px;
   overflow-y: auto;
 }
 
 .agenda-list {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 5px;
 }
 
 .agenda-item {
   display: flex;
-  gap: 14px;
-  padding: 12px 14px;
+  gap: 8px;
+  padding: 6px 9px;
   background: var(--bg-card-subtle);
   border: 1px solid var(--border-card);
   border-radius: var(--radius-sm);
@@ -764,7 +842,7 @@ html, body {
 .agenda-item.status-active {
   border-color: var(--accent-cyan);
   background: rgba(56, 189, 248, 0.08);
-  box-shadow: 0 0 16px rgba(56, 189, 248, 0.12);
+  box-shadow: 0 0 10px rgba(56, 189, 248, 0.12);
 }
 
 .agenda-item.status-past {
@@ -775,18 +853,18 @@ html, body {
 .agenda-time-column {
   display: flex;
   flex-direction: column;
-  min-width: 78px;
+  min-width: 66px;
   font-family: var(--font-mono);
 }
 
 .agenda-time-text {
-  font-size: 1.05rem;
+  font-size: 0.88rem;
   font-weight: 700;
   color: var(--text-primary);
 }
 
 .agenda-duration {
-  font-size: 0.8rem;
+  font-size: 0.68rem;
   color: var(--text-muted);
 }
 
@@ -794,7 +872,7 @@ html, body {
   flex: 1;
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 2px;
 }
 
 .agenda-item-header {
@@ -804,14 +882,14 @@ html, body {
 }
 
 .agenda-status-pill {
-  font-size: 0.7rem;
+  font-size: 0.62rem;
   font-weight: 700;
   text-transform: uppercase;
-  padding: 2px 7px;
+  padding: 1px 5px;
   border-radius: var(--radius-pill);
   display: inline-flex;
   align-items: center;
-  gap: 5px;
+  gap: 4px;
 }
 
 .agenda-status-pill.status-active {
@@ -831,8 +909,8 @@ html, body {
 }
 
 .pulse-dot {
-  width: 6px;
-  height: 6px;
+  width: 5px;
+  height: 5px;
   border-radius: 50%;
   background: #000;
   animation: pulseDot 1s infinite alternate;
@@ -844,21 +922,21 @@ html, body {
 }
 
 .agenda-location {
-  font-size: 0.75rem;
+  font-size: 0.68rem;
   color: var(--text-muted);
 }
 
 .agenda-item-title {
-  font-size: 1rem;
+  font-size: 0.85rem;
   font-weight: 700;
   color: var(--text-primary);
-  line-height: 1.3;
+  line-height: 1.2;
 }
 
 .agenda-item-desc {
-  font-size: 0.8rem;
+  font-size: 0.72rem;
   color: var(--text-secondary);
-  line-height: 1.3;
+  line-height: 1.2;
 }
 
 /* ==========================================================================

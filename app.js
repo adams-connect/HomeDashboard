@@ -74,7 +74,7 @@ class DashboardApp {
       await Promise.allSettled([
         this.weather.fetchWeather(),
         this.radar.fetchRadarData(),
-        this.traffic.fetchAlerts(),
+        this.traffic.fetchTrafficData(),
         this.agenda.fetchEvents()
       ]);
       this.clock.markSync();
