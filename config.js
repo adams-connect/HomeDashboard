@@ -8,10 +8,10 @@
 export const CONFIG = {
   // Primary location for Weather, Radar, and Alerts
   location: {
-    name: "New York, NY",
-    latitude: 40.7128,
-    longitude: -74.0060,
-    zoom: 7 // Radar zoom level (6 = broad regional ~200mi, 7 = metro ~100mi, 8 = local ~50mi)
+    name: "Altoona, PA",
+    latitude: 40.508012,
+    longitude: -78.396219,
+    zoom: 8 // Radar zoom level (6 = broad regional ~200mi, 7 = metro ~100mi, 8 = local ~50mi)
   },
 
   // Measurement and display units
@@ -26,9 +26,9 @@ export const CONFIG = {
   // Polling intervals and timing cycles
   intervals: {
     clockSec: 1,               // Digital clock tick rate
-    weatherMin: 15,            // Weather data refresh frequency
-    radarFramesFetchMin: 15,   // Radar tile metadata refresh frequency
-    radarCycleMs: 800,         // Radar animation speed per frame (800ms is standard)
+    weatherMin: 5,            // Weather data refresh frequency
+    radarFramesFetchMin: 5,   // Radar tile metadata refresh frequency
+    radarCycleMs: 500,         // Radar animation speed per frame (800ms is standard)
     trafficMin: 5,             // Traffic & hazard alerts refresh frequency
     agendaMin: 10,             // Daily agenda / calendar refresh frequency
     dailyReloadHour: 3         // Hour of the day (0-23) for silent 24-hour document reload (3:00 AM)
